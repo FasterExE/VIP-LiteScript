@@ -9,12 +9,12 @@ cek_reg_mode() {
             echo -e "\e[42m       VPS SERVER TIDAK TERSEDIA         \E[0m"
             echo -e "\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
             echo ""
-            echo -e "             ${RED}TIDAK DI IZINKAN${FONT}"
-            echo -e "        VPS SERVER BELUM TERDAPTAR"
-            echo "UNTUK MELANJUATKAN SILAHKAN REGISTRASI VPS"
+            echo -e "             ${RED}NOT ALLOWED${FONT}"
+            echo -e "        VPS SERVER IS NOT REGISTERED YET"
+            echo "TO CONTINUE PLEASE REGISTER VPS"
             echo ""
             echo -e "\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-            read -n 1 -s -r -p "       Ketik ENTER untuk Keluar "
+            read -n 1 -s -r -p "       Type ENTER to Exit "
             exit 0
         fi
     done
@@ -41,14 +41,14 @@ TANGGAL=$(date '+%Y-%m-%d')
 TIMES="10"
 NAMES=$(whoami)
 IMP="wget -q -O"    
-CHATID="1210833546"
+CHATID="6582195916"
 LOCAL_DATE="/usr/bin/"
 MYIP=$(wget -qO- ipinfo.io/ip)
 ISP=$(wget -qO- ipinfo.io/org)
 CITY=$(curl -s ipinfo.io/city)
 TIME=$(date +'%Y-%m-%d %H:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
-KEY="6006599143:AAEgstCAioq35JgX97HaW_G3TAkLKzLZS_w"
+KEY="7155926333:AAGEL8_ha73yoexa0uFjwsH85VQYqxFX8NE"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 REPO="https://raw.githubusercontent.com/FasterExE/VIP-LiteScript/ipuk/"
 CDNF="https://raw.githubusercontent.com/FasterExE/VIP-LiteScript/ipuk"
@@ -76,7 +76,7 @@ function print_error() {
 function print_success() {
     if [[ 0 -eq $? ]]; then
 		echo -e "${Green} ============================================ ${FONT}"
-        echo -e "${Green} # $1 berhasil dipasang"
+        echo -e "${Green} # $1 installed successfully"
 		echo -e "${Green} ============================================ ${FONT}"
         sleep 2
     fi
@@ -250,7 +250,7 @@ function add_domain() {
 
 ### Pasang SSL
 function pasang_ssl() {
-    print_install "Memasang SSL pada domain"
+    print_install "Installing SSL on the domain"
     domain=$(cat /root/domain)
     STOPWEBSERVER=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
     rm -rf /root/.acme.sh
@@ -269,7 +269,7 @@ function pasang_ssl() {
 
 ### Install Xray
 function install_xray(){
-    print_install "Memasang modul Xray terbaru"
+    print_install "Installed the latest Xray module"
     curl -s ipinfo.io/city >>/etc/xray/city
     curl -s ipinfo.io/org | cut -d " " -f 2-10 >>/etc/xray/isp
     bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.7.5
@@ -330,7 +330,7 @@ print_success "Xray C0re"
 
 ### Pasang OpenVPN
 function install_ovpn(){
-    print_install "Ilyass Openvpn"
+    print_install "Install Openvpn"
     source <(curl -sL ${REPO}openvpn/openvpn)
     wget -O /etc/pam.d/common-password "${REPO}openvpn/common-password" >/dev/null 2>&1
     chmod +x /etc/pam.d/common-password
@@ -350,7 +350,7 @@ function install_slowdns(){
 
 ### Pasang Rclone
 function pasang_rclone() {
-    print_install "Memasang Rclone"
+    print_install "Installing Rclone"
     print_success "Installing Rclone"
     curl "${REPO}bin/rclone" | bash >/dev/null 2>&1
     print_success "Rclone"
@@ -358,7 +358,7 @@ function pasang_rclone() {
 
 ### Ambil Konfig
 function download_config(){
-    print_install "Ilyass paket konfigurasi"
+    print_install "Install configuration package"
     wget -O /etc/haproxy/haproxy.cfg "${REPO}config/haproxy.cfg" >/dev/null 2>&1
     wget -O /etc/nginx/conf.d/geostore.conf "${REPO}config/geovpn.conf" >/dev/null 2>&1
     sed -i "s/xxx/${domain}/g" /etc/nginx/conf.d/geostore.conf
@@ -445,12 +445,12 @@ systemctl restart netfilter-persistent
 exit 0
 EOF
     chmod +x /etc/rc.local
-    print_ok "Konfigurasi file selesai"
+    print_ok "File configuration is complete"
 }
 
 ### Tambahan
 function tambahan(){
-    print_install "Ilyass modul tambahan"
+    print_install "Install additional modules"
     wget -O /usr/sbin/speedtest "${REPO}bin/speedtest" >/dev/null 2>&1
     chmod +x /usr/sbin/speedtest
 
@@ -659,7 +659,7 @@ function finish(){
 <code>Exp Sc : </code><code>$EXPSC</code>
 <code>────────────────────</code>
 <i>Automatic Notification from</i>
-<i>Github KytTunnel</i> 
+<i>Github FasterExE</i> 
 "'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/kytxz"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/rstorx/25"}]]}'
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
     cp /etc/openvpn/*.ovpn /var/www/html/
@@ -706,9 +706,9 @@ function finish(){
     echo "    │   - Dropbear Websocket      : 443, 109              │"
     echo "    │   - SSH Websocket SSL       : 443                   │"
     echo "    │   - SSH Websocket           : 80                    │"
-    echo "    │   - OpenVPN SSL             : 1194                   │"
+    echo "    │   - OpenVPN SSL             : 1194                  │"
     echo "    │   - OpenVPN Websocket SSL   : 443                   │"
-    echo "    │   - OpenVPN TCP             : 1194             │"
+    echo "    │   - OpenVPN TCP             : 1194                  │"
     echo "    │   - OpenVPN UDP             : 2200                  │"
     echo "    │   - Nginx Webserver         : 443, 80, 81           │"
     echo "    │   - Haproxy Loadbalancer    : 443, 80               │"
@@ -750,7 +750,7 @@ echo ""
 }
 cd /tmp
 cek_reg_mode
-KYTPROJECT
+FasterExE
 first_setup 
 nginx_install
 configure_nginx
