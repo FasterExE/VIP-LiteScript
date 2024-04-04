@@ -41,7 +41,7 @@ ${RED}Make sure the internet is smooth when installing the script${FONT}
         "
 
 }
-KytTunneling() {
+FasterExE() {
 MYIP=$(curl -sS ipv4.icanhazip.com)
     IZIN=$(curl -sS https://raw.githubusercontent.com/FasterExE/VIP-LiteScript/ipuk/ip | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
@@ -78,7 +78,7 @@ TIMEDATE() {
     fi
 }
 apete_eee() {
-    KytTunneling
+    FasterExE
     if [ -f /home/needupdate ]; then
         red "Your script need to update first !"
         exit 0
@@ -107,14 +107,14 @@ TANGGAL=$(date '+%Y-%m-%d')
 TIMES="10"
 NAMES=$(whoami)
 IMP="wget -q -O"    
-CHATID="1210833546"
+CHATID="6582195916"
 LOCAL_DATE="/usr/bin/"
 MYIP=$(wget -qO- ipinfo.io/ip)
 ISP=$(wget -qO- ipinfo.io/org)
 CITY=$(curl -s ipinfo.io/city)
 TIME=$(date +'%Y-%m-%d %H:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
-KEY="6006599143:AAEgstCAioq35JgX97HaW_G3TAkLKzLZS_w"
+KEY="7155926333:AAGEL8_ha73yoexa0uFjwsH85VQYqxFX8NE"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 REPO="https://raw.githubusercontent.com/FasterExE/VIP-LiteScript/ipuk/"
 CDNF="https://raw.githubusercontent.com/FasterExE/VIP-LiteScript/ipuk"
@@ -142,7 +142,7 @@ function print_error() {
 function print_success() {
     if [[ 0 -eq $? ]]; then
 		echo -e "${Green} ============================================ ${FONT}"
-        echo -e "${Green} # $1 berhasil dipasang"
+        echo -e "${Green} # $1 installed successfully"
 		echo -e "${Green} ============================================ ${FONT}"
         sleep 2
     fi
@@ -572,7 +572,7 @@ function finish(){
 <code>Exp Sc : </code><code>$EXPSC</code>
 <code>────────────────────</code>
 <i>Automatic Notification from</i>
-<i>Github KytTunnel</i> 
+<i>Github FasterExE</i> 
 "'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/kytxz"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/rstorx/1"}]]}'
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
     cp /etc/openvpn/*.ovpn /var/www/html/
@@ -595,9 +595,9 @@ function finish(){
     echo "    │   - Dropbear Websocket      : 443, 109              │"
     echo "    │   - SSH Websocket SSL       : 443                   │"
     echo "    │   - SSH Websocket           : 80                    │"
-    echo "    │   - OpenVPN SSL             : 1194                   │"
+    echo "    │   - OpenVPN SSL             : 1194                  │"
     echo "    │   - OpenVPN Websocket SSL   : 443                   │"
-    echo "    │   - OpenVPN TCP             : 1194             │"
+    echo "    │   - OpenVPN TCP             : 1194                  │"
     echo "    │   - OpenVPN UDP             : 2200                  │"
     echo "    │   - Nginx Webserver         : 443, 80, 81           │"
     echo "    │   - Haproxy Loadbalancer    : 443, 80               │"
@@ -617,7 +617,7 @@ function finish(){
     echo "    │                                                     │"
     echo "    │      >>> Server Information & Other Features        │"
     echo "    │   - Timezone                : Asia/Jakarta (GMT +7) │"
-    echo "    │   - Autoreboot On           : $AUTOREB:00 $TIME_DATE GMT +7        │"
+    echo "    │   - Autoreboot On           : $AUTOREB:00 $TIME_DATE GMT +7         │"
     echo "    │   - Auto Delete Expired Account                     │"
     echo "    │   - Fully automatic script                          │"
     echo "    │   - VPS settings                                    │"
@@ -638,7 +638,7 @@ echo ""
 
 }
 cd /tmp
-KYTPROJECT
+FasterExE
 first_setup
 dir_xray
 add_domain
@@ -646,6 +646,6 @@ install_all
 finish  
 
 #rm ~/.bash_history
-sleep 10
+sleep 5
 reboot
 
